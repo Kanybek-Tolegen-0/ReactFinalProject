@@ -1,0 +1,11 @@
+.navigation__list {
+    display: flex;
+    list-style-type: none;
+    gap: 48px;
+}
+
+.navigation__list a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}

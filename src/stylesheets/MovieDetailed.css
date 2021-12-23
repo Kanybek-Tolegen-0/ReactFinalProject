@@ -1,0 +1,19 @@
+.MovieDetailed {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 64px;
+}
+
+.additional-data {
+    width: 400px;
+}
+
+.additional-data__title,
+.additional-data__description {
+    margin-bottom: 32px;
+}
+
+.additional-data__title {
+    font-size: 32px;
+    color: #FED530;
+}

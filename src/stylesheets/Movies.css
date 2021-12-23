@@ -1,0 +1,22 @@
+.movies-list {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 32px;
+}
+
+.movie {
+    width: 320px;
+    cursor: pointer;
+}
+
+.movie__poster {
+    width: 320px;
+    height: 320px;
+    border-radius: 10% 10% 0 0;
+}
+
+.movie__title {
+    text-align: center;
+    font-size: 24px;
+}
