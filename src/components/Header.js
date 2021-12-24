@@ -3,6 +3,8 @@ import '../stylesheets/Header.css';
 import User from './User';
 import { Link } from 'react-router-dom';
 import isLoggedInContext from '../context/IsLoginContext';
+import {useMemo, useState} from 'react';
+
 function Header(props) {
   const {isLogged, setLogged} = props.value;
     return(
@@ -15,7 +17,7 @@ function Header(props) {
               <input className='search__input'/>
             </div>
             <isLoggedInContext.Consumer>
-              {(value) => (<User isLogged = {value.isLogged}/>)}
+              {(value) => (<User currentUser = {value.user} isLogged = {value.isLogged}/>)}
             </isLoggedInContext.Consumer>
             { !isLogged ? <Link to="/login">Login</Link> : <Link onClick={() => {setLogged(false)}} to="">Logout</Link>}
       </header>

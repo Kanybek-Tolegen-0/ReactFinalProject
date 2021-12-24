@@ -1,15 +1,22 @@
 import { useRef } from 'react';
 import '../stylesheets/LoginPage.css';
-
+import axios from 'axios';
 function LoginPage(props) {
-    const username = useRef();
-    const password = useRef();
-    function login(e) {
+    const username = useRef("");
+    const password = useRef("");
+    async function login(e) {
         e.preventDefault();
-        if(username.current.value === "Kanybek" && password.current.value === "123") {
-            alert("Success");
-            props.setLogged(true);
-        }
+        await axios.get("https://reactfinal-b6792-default-rtdb.firebaseio.com/users.json")
+        .then((response) => {
+            const users = response.data;
+            users.forEach((user) => {
+                if(user?.username === username?.current?.value && user?.password === password?.current?.value){
+                    console.log(user);
+                    props.setUser(user);
+                    props.setLogged(true);
+                }
+            })
+        });
     }
 
     return (

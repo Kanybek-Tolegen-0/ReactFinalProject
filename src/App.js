@@ -5,14 +5,16 @@ import Header from './components/Header';
 import MoviesList from './components/MoviesList';
 import TVShows from './components/TVShows';
 import MovieDetailed from './components/MovieDetailed';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import LoginPage from './components/LoginPage';
 import isLoggedInContext from './context/IsLoginContext';
 
 function App() {
   const [selectedMovie, setSelectedMovie] = useState();
   const [isLogged, setLogged] = useState(false);
-  const value = useMemo(() => ({isLogged, setLogged}), [isLogged]);
+  const [user, setUser] = useState();
+  const value = useMemo(() => ({user, isLogged, setLogged}), [isLogged]);
+
   return (
     <Router>
       <div className="App">
@@ -26,7 +28,7 @@ function App() {
             </Route>
             <Route path="/movies/:movie" element={<MovieDetailed movie = {selectedMovie}/>}/>
             <Route path="/tvshows" element={<TVShows/>}></Route>
-            <Route path="/login" element={!isLogged ? <LoginPage isLogged = {isLogged} setLogged = {setLogged}/> : <Home isLogged = {isLogged}/>}></Route>
+            <Route path="/login" element={!isLogged ? <LoginPage setUser = {setUser} isLogged = {isLogged} setLogged = {setLogged}/> : <Home isLogged = {isLogged}/>}></Route>
         </Routes>
       </div>
     </Router>
