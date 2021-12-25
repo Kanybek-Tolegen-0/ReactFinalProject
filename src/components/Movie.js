@@ -1,17 +1,12 @@
 function Movie(props) {
     const { id,
             title,
-            duration,
-            kinopoisk,
-            director,
-            genre,
-            year,
-            image
+            poster_path
         } = props.movie;
     return (
         <div className="movie" key={id}>
             <div className="movie__poster"
-                style={{"background": `url(${image}) no-repeat`,
+                style={{"background": `url(${"https://image.tmdb.org/t/p/w500"+poster_path}) no-repeat`,
                         "backgroundSize": "320px"}}/>
             <h1 className="movie__title">{title}</h1>
         </div>

@@ -2,69 +2,23 @@ import React, { useEffect, useState } from "react";
 import '../stylesheets/Movies.css';
 import Movie from "./Movie";
 import { Link } from 'react-router-dom';
+import api_key from '../Key';
+import axios from "axios";
+
 function MoviesList(props) {
     const [movies, setMovies] = useState([]);
-
-    useEffect(()=> {
-        setMovies([
-            {
-                id: 0,
-                title: "Человек-паук: Нет пути домой",
-                description: "Жизнь и репутация Питера Паркера оказываются под угрозой, поскольку Мистерио раскрыл всему миру тайну личности Человека-паука. Пытаясь исправить ситуацию, Питер обращается за помощью к Стивену Стрэнджу, но вскоре всё становится намного опаснее.",
-                duration: 148,
-                kinopoisk: 8.6,
-                director: "Джон Уоттс",
-                genre: "фантастика, боевик, приключения, фэнтези",
-                year: 2021,
-                image: "https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/dbfeb90f-741d-482e-aaa8-aba15c490c40/300x450",
-            },
-            {
-                id: 1,
-                title: "Человек-паук: Нет пути домой",
-                description: "Жизнь и репутация Питера Паркера оказываются под угрозой, поскольку Мистерио раскрыл всему миру тайну личности Человека-паука. Пытаясь исправить ситуацию, Питер обращается за помощью к Стивену Стрэнджу, но вскоре всё становится намного опаснее.",
-                duration: 148,
-                kinopoisk: 8.6,
-                director: "Джон Уоттс",
-                genre: "фантастика, боевик, приключения, фэнтези",
-                year: 2021,
-                image: "https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/dbfeb90f-741d-482e-aaa8-aba15c490c40/300x450",
-            },
-            {
-                id: 2,
-                title: "Человек-паук: Нет пути домой",
-                description: "Жизнь и репутация Питера Паркера оказываются под угрозой, поскольку Мистерио раскрыл всему миру тайну личности Человека-паука. Пытаясь исправить ситуацию, Питер обращается за помощью к Стивену Стрэнджу, но вскоре всё становится намного опаснее.",
-                duration: 148,
-                kinopoisk: 8.6,
-                director: "Джон Уоттс",
-                genre: "фантастика, боевик, приключения, фэнтези",
-                year: 2021,
-                image: "https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/dbfeb90f-741d-482e-aaa8-aba15c490c40/300x450",
-            },
-            {
-                id: 3,
-                title: "Человек-паук: Нет пути домой",
-                description: "Жизнь и репутация Питера Паркера оказываются под угрозой, поскольку Мистерио раскрыл всему миру тайну личности Человека-паука. Пытаясь исправить ситуацию, Питер обращается за помощью к Стивену Стрэнджу, но вскоре всё становится намного опаснее.",
-                duration: 148,
-                kinopoisk: 8.6,
-                director: "Джон Уоттс",
-                genre: "фантастика, боевик, приключения, фэнтези",
-                year: 2021,
-                image: "https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/dbfeb90f-741d-482e-aaa8-aba15c490c40/300x450",
-            },
-            {
-                id: 4,
-                title: "Человек-паук: Нет пути домой",
-                description: "Жизнь и репутация Питера Паркера оказываются под угрозой, поскольку Мистерио раскрыл всему миру тайну личности Человека-паука. Пытаясь исправить ситуацию, Питер обращается за помощью к Стивену Стрэнджу, но вскоре всё становится намного опаснее.",
-                duration: 148,
-                kinopoisk: 8.6,
-                director: "Джон Уоттс",
-                genre: "фантастика, боевик, приключения, фэнтези",
-                year: 2021,
-                image: "https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/dbfeb90f-741d-482e-aaa8-aba15c490c40/300x450",
-            }
-    
-        ])
+    const pages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    useEffect(() => {
+        getMovies();
     }, []);
+
+    async function getMovies() {        
+        await axios.get('https://api.themoviedb.org/3/movie/popular/', {
+            params : { api_key: api_key, page: "1"},
+        }).then((response) => {
+            setMovies(response.data.results);
+        });
+    }
 
     const setSelectedMovie = props.setSelectedMovie;
 
