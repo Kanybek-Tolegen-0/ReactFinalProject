@@ -6,7 +6,7 @@ import {
   } from "../redux/favoritesActions";
 import { useDispatch, useSelector } from "react-redux";
 
-function TVShow(props) {
+export default function TVShow(props) {
     const { 
         id,
         name,
@@ -58,5 +58,3 @@ function TVShow(props) {
         </>
     )
 }
-
-export default TVShow;

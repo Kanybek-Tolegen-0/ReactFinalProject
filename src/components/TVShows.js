@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import api_key from '../Key';
 import TVShow from "./TVShow";
 import Loader from "./Loader"
+import AlertMessage from "./AlertMessage";
 
-function TVShows() {
+export default function TVShows() {
     const [tvShows, setTvShows] = useState([])
     const [searchedText, setSearchedText] = useState("");
     const [isLoading, setLoading] = useState(true)
@@ -28,6 +29,10 @@ function TVShows() {
             .then((response) => {
                 setTvShows(response.data.results);
                 setLoading(false)
+            })
+            .catch(error => {
+                setLoading(false);
+                setTvShows([]);
             });
     }
 
@@ -43,14 +48,16 @@ function TVShows() {
             {isLoading ? <Loader /> :
                 <div>
                     {
-                        (tvShows).map((tvShow1) =>
-                            <TVShow tvShow={tvShow1} />
-                        )
+                        tvShows.length != 0 ?
+                            (tvShows).map((tvShow1) =>
+                                <TVShow tvShow={tvShow1} />
+                            ) : <AlertMessage
+                                primaryText="Not Found"
+                                secondaryText="Try to search for something else."
+                            />
                     }
                 </div>}
         </div>
     );
-        
-}
 
-export default TVShows;
+}

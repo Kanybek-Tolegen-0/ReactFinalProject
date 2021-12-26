@@ -14,3 +14,22 @@ a {
   width: 64%;
   margin: 0 auto;
 }
+
+.alert-msg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 100px;
+}
+
+.alert-msg h1 {
+  margin: 0;
+  max-width: 10em;
+  text-align: center;
+  font-size: 5em;
+}
+
+.alert-msg p {
+  font-size: 1.2em;
+}
