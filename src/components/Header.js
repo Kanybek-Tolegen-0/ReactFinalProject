@@ -9,14 +9,14 @@ function Header(props) {
   const {isLogged, setLogged} = props.value;
     return(
         <header className="header">
-            <h1 className="main-logo">Watchflix</h1>
+          <img className="main-logo-img"/>
             <isLoggedInContext.Consumer>
               {(value) => (<Navigation isLoggedIn = {value}/>)}
             </isLoggedInContext.Consumer>
             <isLoggedInContext.Consumer>
               {(value) => (<User currentUser = {value.user} isLogged = {value.isLogged}/>)}
             </isLoggedInContext.Consumer>
-            { !isLogged ? <Link to="/login">Login</Link> : <Link onClick={() => {setLogged(false)}} to="">Logout</Link>}
+            { !isLogged ? <Link to="/login"><button className='log-btn'>Login</button></Link> : <Link onClick={() => {setLogged(false)}} to=""><button className='log-btn'>Logout</button></Link>}
       </header>
     )
 }

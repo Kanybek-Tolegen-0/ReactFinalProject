@@ -13,7 +13,7 @@ function Navigation(props) {
           <li><Link to='movies'>Movies</Link></li>
           <li><Link to='tvshows'>TV Shows</Link></li>
           <li><Link to='favorites'><Badge
-            color="primary"
+            color="secondary"
             badgeContent={size}
             classes={{ badge: "badge-style"}}>
             Favorites
