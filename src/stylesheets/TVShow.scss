@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,700,800');
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html, body{
+  margin: 0;
+  background: black;
+  font-family: 'Montserrat', helvetica, arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.tvshow_card{
+  position: relative;
+  display: block;
+  width: 800px;
+  height: 350px;
+  margin: 50px auto;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: all 0.4s;
+  &:hover{
+    transform: scale(1.02);
+    transition: all 0.4s;
+  }
+  .info_section{
+    position: relative;
+    width: 100%;
+    height: 100%;
+	  background-blend-mode: multiply;
+    z-index: 2;
+    border-radius: 10px;
+    .tvshow_header{
+      position: relative;
+      padding: 25px;
+      height: 40%;
+      h1{
+        color: #fff;
+        font-weight: 400;
+      }
+      h4{
+        color: #9ac7fa;
+        font-weight: 400;
+      }
+      .country{
+        display: inline-block;
+        margin-top: 10px;
+        color: #fff;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid rgba(255,255,255,0.13);
+      }
+      .vote{
+        display: inline-block;
+        color: #cee4fd;
+        margin-left: 10px;
+        margin-top: 10px;
+      }
+      .poster{
+        position: relative;
+        float: left;
+        margin-right: 20px;
+        height: 120px;
+        box-shadow: 0 0 20px -10px rgba(0,0,0,0.5);
+      }
+    }
+    .tvshow_desc{
+      padding: 25px;
+      height: 50%;
+      .text{
+        color: #cfd6e1;
+      }
+    }
+    .tvshow_fav{
+      height: 20%;
+      padding-left: 15px;
+      padding-bottom: 20px;
+    }
+  }
+
+  .add-to-fav {
+    cursor: pointer;
+    font-family: "Helvetica Neue Cyr Medium", Liberation Sans, Arial, sans-serif;
+    font-size: 16px;
+    height: 34px;
+    width: 300px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 2px solid #927502;
+    position: relative;
+    transition: 0.55s cubic-bezier(0.76, 0, 0.24, 1);
+    -webkit-transition: 0.55s cubic-bezier(0.76, 0, 0.24, 1);
+    z-index: 1;
+    outline: 0;
+    color: #927502;
+    &:hover {
+      color: whitesmoke;
+      &::before {
+        top: 0;
+      }
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      background: #927502;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 100%;
+      z-index: -1;
+      transition: top 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+      -webkit-transition: top 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+    }
+  }
+
+  .blur_back{
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    height: 100%; right: 0;
+    background-size: cover;
+    border-radius: 11px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .tvshow_header{
+    width: 60%;
+  }
+  
+  .tvshow_desc{
+    width: 50%;
+  }
+  
+  .info_section{
+    background: linear-gradient(to right, #0d0d0c 50%, transparent 100%);
+  }
+  
+  .blur_back{
+    width: 80%;
+    background-position: -100% 10% !important;  
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .tvshow_card{
+    width: 95%;
+    margin: 70px auto; 
+    min-height: 350px;
+    height: auto;
+  }
+  
+  .blur_back{
+    width: 100%;
+    background-position: 50% 50% !important;  
+  }
+  
+  .tvshow_header{
+    width: 100%;
+    margin-top: 85px;
+  }
+  
+  .tvshow_desc{
+    width: 100%;
+  }
+  
+  .info_section{
+    background: linear-gradient(to top, rgb(20, 20, 19) 50%, transparent 100%);
+    display: inline-grid;
+  }
+}
+
+#tv{
+  box-shadow: 0px 0px 150px -45px rgba(199,147,75, 0.7);
+  margin-bottom: 50px;
+  &:hover{
+    box-shadow: 0px 0px 120px -55px rgba(199,147,75, 0.7);
+  }
+}

@@ -13,9 +13,6 @@ function Header(props) {
             <isLoggedInContext.Consumer>
               {(value) => (<Navigation isLoggedIn = {value}/>)}
             </isLoggedInContext.Consumer>
-            <div className='search'>
-              <input className='search__input'/>
-            </div>
             <isLoggedInContext.Consumer>
               {(value) => (<User currentUser = {value.user} isLogged = {value.isLogged}/>)}
             </isLoggedInContext.Consumer>

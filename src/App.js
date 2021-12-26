@@ -9,6 +9,7 @@ import { useMemo, useState } from 'react';
 import LoginPage from './components/LoginPage';
 import isLoggedInContext from './context/IsLoginContext';
 import SignUpPage from './components/SignUpPage';
+import Favorites from './components/Favorites';
 
 function App() {
   const [selectedMovie, setSelectedMovie] = useState();
@@ -29,6 +30,7 @@ function App() {
             </Route>
             <Route path="/movies/:movie" element={<MovieDetailed movie = {selectedMovie}/>}/>
             <Route path="/tvshows" element={<TVShows/>}></Route>
+            <Route path="/favorites" element={<Favorites/>}></Route>
             <Route path="/login" element={!isLogged ? <LoginPage setUser = {setUser} setLogged = {setLogged}/> : <Home isLogged = {isLogged}/>}></Route>
             <Route path="/sign-up" element = {!isLogged ? <SignUpPage setLogged = {setLogged} setUser = {setUser}/> : <Home isLogged = {isLogged}/>}></Route>
         </Routes>
