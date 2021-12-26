@@ -2,10 +2,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import api_key from '../Key';
 import TVShow from "./TVShow";
+import Loader from "./Loader"
 
 function TVShows() {
     const [tvShows, setTvShows] = useState([])
     const [searchedText, setSearchedText] = useState("");
+    const [isLoading, setLoading] = useState(true)
 
     useEffect(() => getTvShows(), []);
 
@@ -15,7 +17,7 @@ function TVShows() {
         })
             .then((response) => {
                 setTvShows(response.data.results);
-                console.log(response.data)
+                setLoading(false)
             });
     };
 
@@ -25,25 +27,30 @@ function TVShows() {
         })
             .then((response) => {
                 setTvShows(response.data.results);
+                setLoading(false)
             });
     }
 
     return (
-        <div className='TVShows'>
+        <div className="tv-shows">
             <div className='search'>
                 <input className='search__input' onChange={(e) => {
+                    setLoading(true)
                     setSearchedText(e.target.value);
                     onSearch()
-                }} />
+                }} placeholder="Search for..." />
             </div>
-            <h1>TV Shows</h1>
-            {
-                (tvShows).map((tvShow1) =>
-                    <TVShow tvShow={tvShow1} />
-                )
-            }
+            {isLoading ? <Loader /> :
+                <div>
+                    {
+                        (tvShows).map((tvShow1) =>
+                            <TVShow tvShow={tvShow1} />
+                        )
+                    }
+                </div>}
         </div>
     );
+        
 }
 
 export default TVShows;

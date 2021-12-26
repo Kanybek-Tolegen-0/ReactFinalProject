@@ -1,12 +1,13 @@
 import { useSelector } from "react-redux";
+import TVShow from "./TVShow";
 
 function Favorites() {
     const favorites = useSelector((state) => state.favoriteStore.favorites);
 
     return (
-        <div className="content">
+        <div className='tv-shows'>
             {Object.values(favorites).map((favorite) => (
-              console.log(favorite)
+                <TVShow tvShow={favorite} />
             ))}
           </div>
     );
